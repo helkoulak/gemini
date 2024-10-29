@@ -1,6 +1,6 @@
 %% Creator: Inkscape 1.1.2 (0a00cf5339, 2022-02-04), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'tcpls_record_svg-tex.pdf' (pdf, eps, ps)
+%% Accompanies image file 'failover_svg-tex.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{594.75bp}%
+    \setlength{\unitlength}{592.5bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,9 +50,17 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.36948298)%
+  \begin{picture}(1,0.2278481)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{tcpls_record_svg-tex.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{failover_svg-tex.pdf}}%
+    \put(0.36708861,0.18481013){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}s:0 seq:1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{failover_svg-tex.pdf}}%
+    \put(0.63291139,0.18481013){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}s:0 seq:0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{failover_svg-tex.pdf}}%
+    \put(0.36835443,0.0835443){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}s:0 seq:1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{failover_svg-tex.pdf}}%
+    \put(0.63291139,0.0835443){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}s:1 seq:0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{failover_svg-tex.pdf}}%
   \end{picture}%
 \endgroup%
