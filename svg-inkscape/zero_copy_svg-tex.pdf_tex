@@ -1,0 +1,106 @@
+%% Creator: Inkscape 1.1.2 (0a00cf5339, 2022-02-04), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'zero_copy_svg-tex.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{592.875bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.6457938)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{zero_copy_svg-tex.pdf}}%
+    \put(0.10752688,0.04680582){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}IP Header\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{zero_copy_svg-tex.pdf}}%
+    \put(0.25932954,0.04680582){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Payload\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{zero_copy_svg-tex.pdf}}%
+    \put(0.56293485,0.04680582){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}IP Header\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{zero_copy_svg-tex.pdf}}%
+    \put(0.71473751,0.04680582){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Payload\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{zero_copy_svg-tex.pdf}}%
+    \put(0.91081594,0.04680582){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Network\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{zero_copy_svg-tex.pdf}}%
+    \put(0.21505376,0.24920936){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Chunk...\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{zero_copy_svg-tex.pdf}}%
+    \put(0.10752688,0.24920936){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Transport...\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{zero_copy_svg-tex.pdf}}%
+    \put(0.30993042,0.24920936){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Chunk...\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{zero_copy_svg-tex.pdf}}%
+    \put(0.37950664,0.24920936){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Tag\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{zero_copy_svg-tex.pdf}}%
+    \put(0.51233397,0.24920936){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Transport...\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{zero_copy_svg-tex.pdf}}%
+    \put(0.61986085,0.24920936){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Chunk...\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{zero_copy_svg-tex.pdf}}%
+    \put(0.71473751,0.24920936){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Chunk...\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{zero_copy_svg-tex.pdf}}%
+    \put(0.78431373,0.24920936){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Tag\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{zero_copy_svg-tex.pdf}}%
+    \put(0.91334598,0.25553447){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Transport\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{zero_copy_svg-tex.pdf}}%
+    \put(0.25300443,0.12903226){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Network::r...\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{zero_copy_svg-tex.pdf}}%
+    \put(0.10120177,0.52751423){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Chunk...\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=17]{zero_copy_svg-tex.pdf}}%
+    \put(0.19607843,0.52751423){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Chunk...\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=18]{zero_copy_svg-tex.pdf}}%
+    \put(0.10120177,0.61606578){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Len=50\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=19]{zero_copy_svg-tex.pdf}}%
+    \put(0.25932954,0.33776091){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Dec at offset 0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=20]{zero_copy_svg-tex.pdf}}%
+    \put(0.20240354,0.4516129){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Chunk...\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=21]{zero_copy_svg-tex.pdf}}%
+    \put(0.20240354,0.4516129){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Chunk...\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=22]{zero_copy_svg-tex.pdf}}%
+    \put(0.2972802,0.4516129){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Chunk...\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=23]{zero_copy_svg-tex.pdf}}%
+    \put(0.67046173,0.33776091){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Dec at offset 50\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=24]{zero_copy_svg-tex.pdf}}%
+    \put(0.92979127,0.54016445){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Application\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=25]{zero_copy_svg-tex.pdf}}%
+  \end{picture}%
+\endgroup%

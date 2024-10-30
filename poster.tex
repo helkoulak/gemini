@@ -48,9 +48,9 @@
 % ====================
 
 \footercontent{
-  \href{https://www.example.com}{https://www.example.com} \hfill
-  ABC Conference 2025, New York --- XYZ-1234 \hfill
-  \href{mailto:alyssa.p.hacker@example.com}{alyssa.p.hacker@example.com}}
+  \href{https://cyberwalingalaxia.be/}{https://cyberwalingalaxia.be/} \hfill
+   2024 Cyberwal in Galaxia\hfill
+  \href{mailto:hosam.elkoulak@unamur.be}{hosam.elkoulak@unamur.be}}
 % (can be left out to remove footer)
 
 % ====================
@@ -79,7 +79,7 @@
 
           \begin{figure}
             \centering
-            \includesvg[width=\textwidth]{tcpls_hs}  % Without the .svg extension
+            \includesvg[width=\textwidth]{tcpls_hs}
             \caption{TCPLS handshake}
             \label{fig:tcpls-hs}
           \end{figure}
@@ -131,20 +131,6 @@
       \separatorcolumn
 
       \begin{column}{\colwidth}
-        \begin{block}{Multipath}
-
-          By extending the TLS handshake, TCPLS allows joining several TCP connections to a
-          single TCPLS session to support \textbf{connection migration},
-          \textbf{stream steering} and \textbf{bandwidth aggregation}.
-        \begin{figure}
-          \centering
-          \includesvg[width=\textwidth]{multipath}
-          \caption{Multipath}
-          \label{fig:multipath}
-        \end{figure}
-
-
-        \end{block}
 
         \begin{block}{Stream Multiplexing}
           Streams can be multiplexed across the available TCP connections of the TCPLS session.
@@ -160,8 +146,7 @@
 
         \begin{block}{Failover}
           When a TCP connection fails, e.g., due to middleboxes
-          or network outages, TCPLS leverages its joining mechanism to re-
-          cover the session over another TCP connection.
+          or network outages, TCPLS leverages its joining mechanism to recover the session over another TCP connection.
            \begin{figure}
             \centering
             \includesvg[width=\textwidth, inkscapelatex=false]{failover}
@@ -171,76 +156,59 @@
 
         \end{block}
 
+        \begin{block}{Multipath}
+
+          By extending the TLS handshake, TCPLS allows joining several TCP connections to a
+          single TCPLS session to support \textbf{connection migration},
+          \textbf{stream steering} and \textbf{bandwidth aggregation}.
+        \begin{figure}
+          \centering
+          \includesvg[width=\textwidth]{multipath}
+          \caption{Multipath}
+          \label{fig:multipath}
+        \end{figure}
+
+
+        \end{block}
+        \begin{block}{Performance Oriented Design}
+          TCPLS is designed to enhance overall performance compared to similar protocols like QUIC,
+          with a specific emphasis on optimizing the receiving side.
+          \begin{itemize}
+             \item \textbf{Reverso and zero-copy contiguous receive buffers}
+            \item \textbf{Reordering of records in multipath scenario}
+            \item \textbf{Size of TCPLS records}
+          \end{itemize}
+
+        \end{block}
+
       \end{column}
 
       \separatorcolumn
 
       \begin{column}{\colwidth}
 
-        \begin{exampleblock}{A highlighted block containing some math}
+        \begin{block}{Reverso and Zero-Copy}
 
-          A different kind of highlighted block.
+          \heading{Reverso}
+          Two key principles may be applied to any encrypted transport protocol:
 
-          $$
-          \int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi}
-          $$
-
-          Interdum et malesuada fames $\{1, 4, 9, \ldots\}$ ac ante ipsum primis in
-          faucibus. Cras eleifend dolor eu nulla suscipit suscipit. Sed lobortis non
-          felis id vulputate.
-
-          \heading{A heading inside a block}
-
-          Praesent consectetur mi $x^2 + y^2$ metus, nec vestibulum justo viverra
-          nec. Proin eget nulla pretium, egestas magna aliquam, mollis neque. Vivamus
-          dictum $\mathbf{u}^\intercal\mathbf{v}$ sagittis odio, vel porta erat
-          congue sed. Maecenas ut dolor quis arcu auctor porttitor.
-
-          \heading{Another heading inside a block}
-
-          Sed augue erat, scelerisque a purus ultricies, placerat porttitor neque.
-          Donec $P(y \mid x)$ fermentum consectetur $\nabla_x P(y \mid x)$ sapien
-          sagittis egestas. Duis eget leo euismod nunc viverra imperdiet nec id
-          justo.
-
-        \end{exampleblock}
-
-        \begin{block}{Nullam vel erat at velit convallis laoreet}
-
-          Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-          inceptos himenaeos. Phasellus libero enim, gravida sed erat sit amet,
-          scelerisque congue diam. Fusce dapibus dui ut augue pulvinar iaculis.
-
-          \begin{table}
+          \begin{itemize}
+            \item \textbf{Principle 1.} The field order within all encrypted control and data chunks is reversed.
+            For a chunk with type (u8), foo (u16), and bar (u64), the order becomes bar (u64), foo (u16), type (u8).
+            \item \textbf{Principle 2.} Only a single chunk of data is allowed within a record followed be arbitrary
+            number of control chunks.
+          \end{itemize}
+          \heading{Contiguous Zero-Copy}
+          Applying the principles of reverso lead to a simplified receive code path.
+          Data received can be decrypted directly into the application buffers avoiding unnecessary copying.
+          \begin{figure}
             \centering
-            \begin{tabular}{l r r c}
-              \toprule
-              \textbf{First column} & \textbf{Second column} & \textbf{Third column} & \textbf{Fourth} \\
-              \midrule
-              Foo                   & 13.37                  & 384,394               & $\alpha$        \\
-              Bar                   & 2.17                   & 1,392                 & $\beta$         \\
-              Baz                   & 3.14                   & 83,742                & $\delta$        \\
-              Qux                   & 7.59                   & 974                   & $\gamma$        \\
-              \bottomrule
-            \end{tabular}
-            \caption{A table caption.}
-          \end{table}
-
-          Donec quis posuere ligula. Nunc feugiat elit a mi malesuada consequat. Sed
-          imperdiet augue ac nibh aliquet tristique. Aenean eu tortor vulputate,
-          eleifend lorem in, dictum urna. Proin auctor ante in augue tincidunt
-          tempor. Proin pellentesque vulputate odio, ac gravida nulla posuere
-          efficitur. Aenean at velit vel dolor blandit molestie. Mauris laoreet
-          commodo quam, non luctus nibh ullamcorper in. Class aptent taciti sociosqu
-          ad litora torquent per conubia nostra, per inceptos himenaeos.
-
-          Nulla varius finibus volutpat. Mauris molestie lorem tincidunt, iaculis
-          libero at, gravida ante. Phasellus at felis eu neque suscipit suscipit.
-          Integer ullamcorper, dui nec pretium ornare, urna dolor consequat libero,
-          in feugiat elit lorem euismod lacus. Pellentesque sit amet dolor mollis,
-          auctor urna non, tempus sem.
-
+            \includesvg[width=\textwidth, inkscapelatex=false]{zero_copy}
+            \caption{contiguous decryption in appliction buffers}
+            \label{fig:zero-copy}
+          \end{figure}
         \end{block}
+
 
         \begin{block}{References}
 
