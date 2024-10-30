@@ -37,7 +37,7 @@
 % Title
 % ====================
 
-\title{Some fancy title: followed by some more text}
+\title{TCPLS: Secure Transport Protocol by Design}
 
 \author{Hosam Elkoulak}
 
@@ -75,7 +75,7 @@
 
         \begin{block}{TCPLS Handshake}
 
-          A typical TCPLS handshake starts with a TCP handshake followed by a TLS 1.3 handshake.
+          A typical TCPLS \cite{rochet2021tcpls} handshake starts with a TCP handshake followed by a TLS 1.3 handshake.
 
           \begin{figure}
             \centering
@@ -189,7 +189,7 @@
 
         \begin{block}{Reverso and Zero-Copy}
 
-          \heading{Reverso}
+          \heading{Reverso \cite{rochet2024improvingencryptedtransportprotocol}}
           Two key principles may be applied to any encrypted transport protocol:
 
           \begin{itemize}
@@ -199,7 +199,7 @@
             number of control chunks.
           \end{itemize}
           \heading{Contiguous Zero-Copy}
-          Applying the principles of reverso lead to a simplified receive code path.
+          Applying the principles of reverso leads to a simplified receive code path.
           Data received can be decrypted directly into the application buffers avoiding unnecessary copying.
           \begin{figure}
             \centering
@@ -209,6 +209,16 @@
           \end{figure}
         \end{block}
 
+        \begin{block}{Dealing with out-of-order records}
+          TCPLS header is secured separately.
+          This makes it possible to decrypt only in-order records.
+          \begin{figure}
+            \centering
+            \includesvg[width=\textwidth, inkscapelatex=false]{reorder}
+            \caption{Avoid copying by decrypting TCPLS header first and decrypt only records in the right order}
+            \label{fig:reorder}
+          \end{figure}
+        \end{block}
 
         \begin{block}{References}
 
