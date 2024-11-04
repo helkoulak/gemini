@@ -20,6 +20,12 @@
 \pgfplotsset{compat=1.14}
 \usepackage{anyfontsize}
 
+% Avoid line breaks in references
+\setbeamertemplate{bibliography entry article}{}
+\setbeamertemplate{bibliography entry title}{}
+\setbeamertemplate{bibliography entry location}{}
+\setbeamertemplate{bibliography entry note}{}
+
 % ====================
 % Lengths
 % ====================
@@ -37,7 +43,7 @@
 % Title
 % ====================
 
-\title{TCPLS: Secure Transport Protocol by Design}
+\title{No more Copies! Re-Designing TCPLS Multipath}
 
 \author{Hosam Elkoulak}
 
@@ -49,7 +55,7 @@
 
 \footercontent{
   \href{https://cyberwalingalaxia.be/}{https://cyberwalingalaxia.be/} \hfill
-   2024 Cyberwal in Galaxia\hfill
+  2024 Cyberwal in Galaxia\hfill
   \href{mailto:hosam.elkoulak@unamur.be}{hosam.elkoulak@unamur.be}}
 % (can be left out to remove footer)
 
@@ -72,49 +78,44 @@
       \separatorcolumn
 
       \begin{column}{\colwidth}
-
-        \begin{block}{TCPLS Handshake}
-
-          A typical TCPLS \cite{rochet2021tcpls} handshake starts with a TCP handshake followed by a TLS 1.3 handshake.
-
+        \begin{block}{What is TCPLS?}
+          TCPLS is an intertwined TLS1.3/TCP design offering transport features like:
+          \begin{itemize}
+            \item \textbf{Multipath.}
+            \item \textbf{Connection migration.}
+            \item \textbf{Fail-over.}
+          \end{itemize}
           \begin{figure}
             \centering
-            \includesvg[width=\textwidth]{tcpls_hs}
-            \caption{TCPLS handshake}
-            \label{fig:tcpls-hs}
+            \includesvg[width=\textwidth, inkscapelatex=false]{tcpls}
+            \caption{The TCPLS network stack.}
+            \label{fig:tcpls}
           \end{figure}
+        \end{block}
 
-          TCPLS supports joining additional TCP connections to a TCPLS session.
-          To join a new TCP connection, the client sends a fake client hello
-          containing one of the tokens received during the TCPLS handshake.
+        \begin{block}{Performance Oriented Design}
+          TCPLS is designed to enhance overall performance compared to similar protocols like QUIC,
+          with a specific emphasis on optimizing the receiving side.
+          \begin{itemize}
+            \item \textbf{Reverso and zero-copy contiguous receive buffers}
+            \item \textbf{Reordering of records in multipath scenario}
+            \item \textbf{Size of TCPLS records}
+          \end{itemize}
 
         \end{block}
 
-        \begin{block}{TCPLS Record}
+        \begin{block}{Reverso\cite{rochet2024improvingencryptedtransportprotocol}}
 
-          TCPLS leverages the TLS records to transport data encrypted and authenticated.
-
-          \begin{figure}
-            \centering
-            \includesvg[width=\textwidth]{tcpls_record}
-            \caption{TCPLS Record}
-            \label{fig:tcpls-record}
-          \end{figure}
-
-
-        \end{block}
-        \begin{block}{TCPLS Transport Services}
-
-          By leveraging TCPLS records and extensions, we can design new
-          modern transport services atop the combination of TCP and TLS. Those services are built atop the TCP
-          byte stream, and as such they avoid interferences of middleboxes that modify the TCP header.
+          Two key principles may be applied to any encrypted transport protocol:
 
           \begin{itemize}
-            \item \textbf{Stream Multiplexing}
-            \item \textbf{Multipath}
-            \item \textbf{Failover}
+            \item \textbf{Principle 1.} The field order within all encrypted control and data chunks is reversed.
+            For a chunk with type (u8), foo (u16), and bar (u64), the order becomes bar (u64), foo (u16), type (u8).
+            \item \textbf{Principle 2.} Only a single chunk of data is allowed within a record followed be arbitrary
+            number of control chunks.
           \end{itemize}
         \end{block}
+
         \begin{figure}
           \centering
           \includesvg[width=\textwidth]{unamur}
@@ -132,73 +133,7 @@
 
       \begin{column}{\colwidth}
 
-        \begin{block}{Stream Multiplexing}
-          Streams can be multiplexed across the available TCP connections of the TCPLS session.
-          \begin{figure}
-            \centering
-            \includesvg[width=\textwidth]{stream_multiplex}
-            \caption{Stream Multiplexing}
-            \label{fig:stream-multiplex}
-          \end{figure}
-        \end{block}
-
-
-
-        \begin{block}{Failover}
-          When a TCP connection fails, e.g., due to middleboxes
-          or network outages, TCPLS leverages its joining mechanism to recover the session over another TCP connection.
-           \begin{figure}
-            \centering
-            \includesvg[width=\textwidth, inkscapelatex=false]{failover}
-            \caption{Failover}
-            \label{fig:failover}
-          \end{figure}
-
-        \end{block}
-
-        \begin{block}{Multipath}
-
-          By extending the TLS handshake, TCPLS allows joining several TCP connections to a
-          single TCPLS session to support \textbf{connection migration},
-          \textbf{stream steering} and \textbf{bandwidth aggregation}.
-        \begin{figure}
-          \centering
-          \includesvg[width=\textwidth]{multipath}
-          \caption{Multipath}
-          \label{fig:multipath}
-        \end{figure}
-
-
-        \end{block}
-        \begin{block}{Performance Oriented Design}
-          TCPLS is designed to enhance overall performance compared to similar protocols like QUIC,
-          with a specific emphasis on optimizing the receiving side.
-          \begin{itemize}
-             \item \textbf{Reverso and zero-copy contiguous receive buffers}
-            \item \textbf{Reordering of records in multipath scenario}
-            \item \textbf{Size of TCPLS records}
-          \end{itemize}
-
-        \end{block}
-
-      \end{column}
-
-      \separatorcolumn
-
-      \begin{column}{\colwidth}
-
-        \begin{block}{Reverso and Zero-Copy}
-
-          \heading{Reverso \cite{rochet2024improvingencryptedtransportprotocol}}
-          Two key principles may be applied to any encrypted transport protocol:
-
-          \begin{itemize}
-            \item \textbf{Principle 1.} The field order within all encrypted control and data chunks is reversed.
-            For a chunk with type (u8), foo (u16), and bar (u64), the order becomes bar (u64), foo (u16), type (u8).
-            \item \textbf{Principle 2.} Only a single chunk of data is allowed within a record followed be arbitrary
-            number of control chunks.
-          \end{itemize}
-          \heading{Contiguous Zero-Copy}
+        \begin{block}{Contiguous Zero-Copy}
           Applying the principles of reverso leads to a simplified receive code path.
           Data received can be decrypted directly into the application buffers avoiding unnecessary copying.
           \begin{figure}
@@ -209,16 +144,61 @@
           \end{figure}
         \end{block}
 
-        \begin{block}{Dealing with out-of-order records}
-          TCPLS header is secured separately.
-          This makes it possible to decrypt only in-order records.
+        \begin{block}{Previous Design Drawbacks}
+          The sender's inability to identify the stream to which the received record belongs has resulted in two design drawbacks:
+          \heading{Stream Multiplexing}
+          Sender has to send the TCPLS' frame \textbf{Stream Change} before switching between streams which consumes
+          more bandwidth and requires extra processing for encryption and decryption.
           \begin{figure}
             \centering
-            \includesvg[width=\textwidth, inkscapelatex=false]{reorder}
-            \caption{Avoid copying by decrypting TCPLS header first and decrypt only records in the right order}
-            \label{fig:reorder}
+            \includesvg[width=\textwidth, inkscapelatex=false]{schange}
+            \caption{send stream change frame before swithing streams}
+            \label{fig:schange}
+          \end{figure}
+          \heading{Extra copy along receive path}
+          Decryption happens in place and the result is copied in the application receive buffer.
+          \begin{figure}
+            \centering
+            \includesvg[width=\textwidth, inkscapelatex=false]{inplace}
+            \caption{Additional copy is required to deliver data in app buffers}
+            \label{fig:inplace}
           \end{figure}
         \end{block}
+
+
+      \end{column}
+
+      \separatorcolumn
+
+      \begin{column}{\colwidth}
+
+        \begin{block}{Solution for Previous Design Drawbacks}
+          \heading{TCPLS Header}
+          One could solve the two previous issues by adding a header to TCPLS record.
+          It consists of 4 bytes encoding the offset where to decrypt in app buffers and 4 bytes encoding the stream ID.
+          \begin{figure}
+            \centering
+            \includesvg[width=0.7\textwidth, inkscapelatex=false]{tcpls_header}
+            \caption{TCPLS header}
+            \label{fig:header}
+          \end{figure}
+          As a result two improvements were achieved:
+          \begin{itemize}
+            \item Remove the need for \textbf{Stream Change} frames,
+            as the TCPLS header already contains this information,
+            saving bandwidth and eliminating extra encryption/decryption operations for the frame.
+            \item TCPLS header is secured separately.
+            This makes it possible to decrypt directly in app buffers avoiding the extra copy operation.
+            In addition to that the order of the records can be checked before decrypting.
+            \begin{figure}
+            \centering
+            \includesvg[width=0.9\textwidth, inkscapelatex=false]{dec_hdr}
+            \caption{Avoid copying by decrypting TCPLS header first and decrypt only records in the right order}
+            \label{fig:dec_hdr}
+          \end{figure}
+          \end{itemize}
+
+       \end{block}
 
         \begin{block}{References}
 

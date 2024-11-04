@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0" version="24.8.3">
+  <diagram name="Page-1" id="R5V4E9TbKE61BlWKnXkg">
+    <mxGraphModel dx="2004" dy="1125" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="BvGWZAFVZQQG4dKRlN2r-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="520" width="560" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="BvGWZAFVZQQG4dKRlN2r-2" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Application receive Buffer&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="610" y="540" width="230" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="BvGWZAFVZQQG4dKRlN2r-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="40" y="320" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="BvGWZAFVZQQG4dKRlN2r-4" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Record n&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#007FFF;" vertex="1" parent="1">
+          <mxGeometry x="80" y="320" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="BvGWZAFVZQQG4dKRlN2r-5" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Record n+1&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FF3333;" vertex="1" parent="1">
+          <mxGeometry x="240" y="320" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="BvGWZAFVZQQG4dKRlN2r-6" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Record n+2&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FF3333;" vertex="1" parent="1">
+          <mxGeometry x="400" y="320" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="BvGWZAFVZQQG4dKRlN2r-8" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="560" y="320" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="BvGWZAFVZQQG4dKRlN2r-9" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;TCP Connection Buffer&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="610" y="340" width="210" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="BvGWZAFVZQQG4dKRlN2r-10" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="BvGWZAFVZQQG4dKRlN2r-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="80" y="400" as="sourcePoint" />
+            <mxPoint x="130" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BvGWZAFVZQQG4dKRlN2r-11" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Record n&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#007FFF;" vertex="1" parent="1">
+          <mxGeometry x="40" y="490" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="BvGWZAFVZQQG4dKRlN2r-12" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Copy decrypted record&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="450" width="210" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="BvGWZAFVZQQG4dKRlN2r-13" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Decrypt in place&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="80" y="280" width="150" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
