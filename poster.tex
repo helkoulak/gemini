@@ -67,6 +67,20 @@
 % \logoright{\includegraphics[height=7cm]{logo1.pdf}}
 % \logoleft{\includegraphics[height=7cm]{logo2.pdf}}
 
+
+% ====================
+% Custom Multi-Column Title Definition
+% ====================
+
+\newcommand{\multicolumntitle}[1]{%
+  \begin{center}
+  \vspace{0.5cm} % Adjust spacing as needed
+  {\bfseries \LARGE #1} % Bold and larger size
+  \vspace{0.5cm}
+  \end{center}
+}
+
+
 % ====================
 % Body
 % ====================
@@ -74,6 +88,7 @@
 \begin{document}
 
   \begin{frame}[t]
+    \multicolumntitle{Background}
     \begin{columns}[t]
       \separatorcolumn
 
@@ -92,22 +107,12 @@
             \label{fig:tcpls}
           \end{figure}
         \end{block}
+      \end{column}
+      \separatorcolumn
 
-        \begin{block}{Performance Oriented Design}
-          TCPLS is designed to enhance overall performance compared to similar protocols like QUIC,
-          with a specific emphasis on optimizing the receiving side.
-          \begin{itemize}
-            \item \textbf{Reverso and zero-copy contiguous receive buffers}
-            \item \textbf{Reordering of records in multipath scenario}
-            \item \textbf{Size of TCPLS records}
-          \end{itemize}
-
-        \end{block}
-
+      \begin{column}{\colwidth}
         \begin{block}{Reverso\cite{rochet2024improvingencryptedtransportprotocol}}
-
           Two key principles may be applied to any encrypted transport protocol:
-
           \begin{itemize}
             \item \textbf{Principle 1.} The field order within all encrypted control and data chunks is reversed.
             For a chunk with type (u8), foo (u16), and bar (u64), the order becomes bar (u64), foo (u16), type (u8).
@@ -115,24 +120,10 @@
             number of control chunks.
           \end{itemize}
         \end{block}
-
-        \begin{figure}
-          \centering
-          \includesvg[width=\textwidth]{unamur}
-          \label{fig:unamur}
-        \end{figure}
-        \begin{figure}
-          \centering
-          \includesvg[width=\textwidth]{cyberwal}
-          \label{fig:cyberwal}
-        \end{figure}
-
       \end{column}
-
       \separatorcolumn
 
       \begin{column}{\colwidth}
-
         \begin{block}{Contiguous Zero-Copy}
           Applying the principles of reverso leads to a simplified receive code path.
           Data received can be decrypted directly into the application buffers avoiding unnecessary copying.
@@ -143,7 +134,14 @@
             \label{fig:zero-copy}
           \end{figure}
         \end{block}
+      \end{column}
 
+    \end{columns}
+
+    \multicolumntitle{Drawbacks vs. Solution}
+    \begin{columns}[t]
+      \separatorcolumn
+      \begin{column}{\colwidth}
         \begin{block}{Previous Design Drawbacks}
           The sender's inability to identify the stream to which the received record belongs has resulted in two design drawbacks:
           \heading{Stream Multiplexing}
@@ -165,20 +163,19 @@
           \end{figure}
         \end{block}
 
-
       \end{column}
-
       \separatorcolumn
 
-      \begin{column}{\colwidth}
 
-        \begin{block}{Solution for Previous Design Drawbacks}
-          \heading{TCPLS Header}
-          One could solve the two previous issues by adding a header to TCPLS record.
-          It consists of 4 bytes encoding the offset where to decrypt in app buffers and 4 bytes encoding the stream ID.
+
+      \begin{column}{\colwidth}
+        \begin{block}{Solution}
+          \heading{TCPLS Protected Header}
+          TCPLS header consists of 4 bytes encoding the offset where to decrypt in app buffers and 4 bytes encoding the
+          stream ID.
           \begin{figure}
             \centering
-            \includesvg[width=0.7\textwidth, inkscapelatex=false]{tcpls_header}
+            \includesvg[width=0.45\textwidth, inkscapelatex=false]{tcpls_header}
             \caption{TCPLS header}
             \label{fig:header}
           \end{figure}
@@ -191,14 +188,17 @@
             This makes it possible to decrypt directly in app buffers avoiding the extra copy operation.
             In addition to that the order of the records can be checked before decrypting.
             \begin{figure}
-            \centering
-            \includesvg[width=0.9\textwidth, inkscapelatex=false]{dec_hdr}
-            \caption{Avoid copying by decrypting TCPLS header first and decrypt only records in the right order}
-            \label{fig:dec_hdr}
-          \end{figure}
+              \centering
+              \includesvg[width=0.9\textwidth, inkscapelatex=false]{dec_hdr}
+              \caption{Avoid copying by decrypting only records in the right order}
+              \label{fig:dec_hdr}
+            \end{figure}
           \end{itemize}
+        \end{block}
+      \end{column}
+      \separatorcolumn
 
-       \end{block}
+      \begin{column}{\colwidth}
 
         \begin{block}{References}
 
@@ -206,6 +206,17 @@
           \footnotesize{\bibliographystyle{plain}\bibliography{poster}}
 
         \end{block}
+
+        \begin{figure}
+          \centering
+          \includesvg[width=\textwidth]{unamur}
+          \label{fig:unamur}
+        \end{figure}
+        \begin{figure}
+          \centering
+          \includesvg[width=\textwidth]{cyberwal}
+          \label{fig:cyberwal}
+        \end{figure}
 
       \end{column}
 
